@@ -25,6 +25,16 @@ resource "google_dns_record_set" "a_records" {
   rrdatas      = each.value.rrdatas
 }
 
+resource "google_dns_record_set" "aaaa_records" {
+  for_each     = var.aaaa_records
+  name         = each.key == "@" ? var.dns_name : "${each.key}.${var.dns_name}"
+  managed_zone = google_dns_managed_zone.zone.name
+  project      = google_dns_managed_zone.zone.project
+  type         = "AAAA"
+  ttl          = coalesce(each.value.ttl, var.default_ttl)
+  rrdatas      = each.value.rrdatas
+}
+
 resource "google_dns_record_set" "cname_records" {
   for_each     = var.cname_records
   name         = each.key == "@" ? var.dns_name : "${each.key}.${var.dns_name}"

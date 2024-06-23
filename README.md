@@ -23,6 +23,7 @@ No modules.
 |------|------|
 | [google_dns_managed_zone.zone](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/dns_managed_zone) | resource |
 | [google_dns_record_set.a_records](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/dns_record_set) | resource |
+| [google_dns_record_set.aaaa_records](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/dns_record_set) | resource |
 | [google_dns_record_set.cname_records](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/dns_record_set) | resource |
 | [google_dns_record_set.mx_records](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/dns_record_set) | resource |
 | [google_dns_record_set.txt_records](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/dns_record_set) | resource |
@@ -33,6 +34,7 @@ No modules.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_a_records"></a> [a\_records](#input\_a\_records) | Google Cloud DNS A Records | <pre>map(object({<br>    rrdatas = list(string)<br>    ttl     = optional(number)<br>  }))</pre> | `{}` | no |
+| <a name="input_aaaa_records"></a> [aaaa\_records](#input\_aaaa\_records) | Google Cloud DNS AAAA Records | <pre>map(object({<br>    rrdatas = list(string)<br>    ttl     = optional(number)<br>  }))</pre> | `{}` | no |
 | <a name="input_cname_records"></a> [cname\_records](#input\_cname\_records) | Google Cloud DNS CNAME Records | <pre>map(object({<br>    rrdatas = list(string)<br>    ttl     = optional(number)<br>  }))</pre> | `{}` | no |
 | <a name="input_default_ttl"></a> [default\_ttl](#input\_default\_ttl) | Default TTL | `number` | `300` | no |
 | <a name="input_dns_name"></a> [dns\_name](#input\_dns\_name) | DNS Name (ex. 'example.com.') | `string` | n/a | yes |

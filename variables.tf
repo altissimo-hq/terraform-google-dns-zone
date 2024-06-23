@@ -7,6 +7,15 @@ variable "a_records" {
   default = {}
 }
 
+variable "aaaa_records" {
+  description = "Google Cloud DNS AAAA Records"
+  type = map(object({
+    rrdatas = list(string)
+    ttl     = optional(number)
+  }))
+  default = {}
+}
+
 variable "cname_records" {
   description = "Google Cloud DNS CNAME Records"
   type = map(object({
