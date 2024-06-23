@@ -55,6 +55,16 @@ resource "google_dns_record_set" "mx_records" {
   rrdatas      = each.value.rrdatas
 }
 
+resource "google_dns_record_set" "ns_records" {
+  for_each     = var.ns_records
+  name         = each.key == "@" ? var.dns_name : "${each.key}.${var.dns_name}"
+  managed_zone = google_dns_managed_zone.zone.name
+  project      = google_dns_managed_zone.zone.project
+  type         = "NS"
+  ttl          = coalesce(each.value.ttl, var.default_ttl)
+  rrdatas      = each.value.rrdatas
+}
+
 resource "google_dns_record_set" "txt_records" {
   for_each     = var.txt_records
   name         = each.key == "@" ? var.dns_name : "${each.key}.${var.dns_name}"

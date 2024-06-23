@@ -26,6 +26,7 @@ No modules.
 | [google_dns_record_set.aaaa_records](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/dns_record_set) | resource |
 | [google_dns_record_set.cname_records](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/dns_record_set) | resource |
 | [google_dns_record_set.mx_records](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/dns_record_set) | resource |
+| [google_dns_record_set.ns_records](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/dns_record_set) | resource |
 | [google_dns_record_set.txt_records](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/dns_record_set) | resource |
 | [google_dns_keys.zone](https://registry.terraform.io/providers/hashicorp/google/latest/docs/data-sources/dns_keys) | data source |
 
@@ -41,6 +42,7 @@ No modules.
 | <a name="input_dnssec_state"></a> [dnssec\_state](#input\_dnssec\_state) | DNSSEC config (off, on, or transfer) | `string` | `"off"` | no |
 | <a name="input_force_destroy"></a> [force\_destroy](#input\_force\_destroy) | Set this true to delete all records in the zone. | `string` | `false` | no |
 | <a name="input_mx_records"></a> [mx\_records](#input\_mx\_records) | Google Cloud DNS MX Records | <pre>map(object({<br>    rrdatas = list(string)<br>    ttl     = optional(number)<br>  }))</pre> | `{}` | no |
+| <a name="input_ns_records"></a> [ns\_records](#input\_ns\_records) | Google Cloud DNS NS Records | <pre>map(object({<br>    rrdatas = list(string)<br>    ttl     = optional(number)<br>  }))</pre> | `{}` | no |
 | <a name="input_project_id"></a> [project\_id](#input\_project\_id) | Google Cloud Project for Cloud DNS Managed Zone | `string` | n/a | yes |
 | <a name="input_txt_records"></a> [txt\_records](#input\_txt\_records) | Google Cloud DNS TXT Records | <pre>map(object({<br>    rrdatas = list(string)<br>    ttl     = optional(number)<br>  }))</pre> | `{}` | no |
 | <a name="input_zone_description"></a> [zone\_description](#input\_zone\_description) | Cloud DNS Zone Description | `string` | `null` | no |

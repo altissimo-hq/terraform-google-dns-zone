@@ -57,6 +57,15 @@ variable "mx_records" {
   default = {}
 }
 
+variable "ns_records" {
+  description = "Google Cloud DNS NS Records"
+  type = map(object({
+    rrdatas = list(string)
+    ttl     = optional(number)
+  }))
+  default = {}
+}
+
 variable "project_id" {
   description = "Google Cloud Project for Cloud DNS Managed Zone"
   type        = string
