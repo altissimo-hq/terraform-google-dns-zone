@@ -1,3 +1,7 @@
+# terraform-google-dns-zone
+
+This module creates a Google Cloud DNS Managed Zone and resources records, including A records, CNAMES, MX records and TXT records.
+
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
