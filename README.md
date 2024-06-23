@@ -18,6 +18,8 @@ No modules.
 | Name | Type |
 |------|------|
 | [google_dns_managed_zone.zone](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/dns_managed_zone) | resource |
+| [google_dns_record_set.a_records](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/dns_record_set) | resource |
+| [google_dns_record_set.cname_records](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/dns_record_set) | resource |
 | [google_dns_record_set.mx_records](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/dns_record_set) | resource |
 | [google_dns_record_set.txt_records](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/dns_record_set) | resource |
 | [google_dns_keys.zone](https://registry.terraform.io/providers/hashicorp/google/latest/docs/data-sources/dns_keys) | data source |
@@ -26,13 +28,15 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_a_records"></a> [a\_records](#input\_a\_records) | Google Cloud DNS A Records | <pre>map(object({<br>    rrdatas = list(string)<br>    ttl     = optional(number)<br>  }))</pre> | `{}` | no |
+| <a name="input_cname_records"></a> [cname\_records](#input\_cname\_records) | Google Cloud DNS CNAME Records | <pre>map(object({<br>    rrdatas = list(string)<br>    ttl     = optional(number)<br>  }))</pre> | `{}` | no |
 | <a name="input_default_ttl"></a> [default\_ttl](#input\_default\_ttl) | Default TTL | `number` | `300` | no |
 | <a name="input_dns_name"></a> [dns\_name](#input\_dns\_name) | DNS Name (ex. 'example.com.') | `string` | n/a | yes |
 | <a name="input_dnssec_state"></a> [dnssec\_state](#input\_dnssec\_state) | DNSSEC config (off, on, or transfer) | `string` | `"off"` | no |
 | <a name="input_force_destroy"></a> [force\_destroy](#input\_force\_destroy) | Set this true to delete all records in the zone. | `string` | `false` | no |
-| <a name="input_mx_records"></a> [mx\_records](#input\_mx\_records) | Google Cloud DNS MX Records | `map(any)` | n/a | yes |
+| <a name="input_mx_records"></a> [mx\_records](#input\_mx\_records) | Google Cloud DNS MX Records | <pre>map(object({<br>    rrdatas = list(string)<br>    ttl     = optional(number)<br>  }))</pre> | `{}` | no |
 | <a name="input_project_id"></a> [project\_id](#input\_project\_id) | Google Cloud Project for Cloud DNS Managed Zone | `string` | n/a | yes |
-| <a name="input_txt_records"></a> [txt\_records](#input\_txt\_records) | Google Cloud DNS TXT Records | `map(any)` | n/a | yes |
+| <a name="input_txt_records"></a> [txt\_records](#input\_txt\_records) | Google Cloud DNS TXT Records | <pre>map(object({<br>    rrdatas = list(string)<br>    ttl     = optional(number)<br>  }))</pre> | `{}` | no |
 | <a name="input_zone_description"></a> [zone\_description](#input\_zone\_description) | Cloud DNS Zone Description | `string` | `null` | no |
 | <a name="input_zone_labels"></a> [zone\_labels](#input\_zone\_labels) | Cloud DNS Zone Labels Map | `map(string)` | `null` | no |
 | <a name="input_zone_name"></a> [zone\_name](#input\_zone\_name) | Cloud DNS Zone Name | `string` | `null` | no |

@@ -15,13 +15,33 @@ data "google_dns_keys" "zone" {
   managed_zone = google_dns_managed_zone.zone.id
 }
 
+resource "google_dns_record_set" "a_records" {
+  for_each     = var.a_records
+  name         = each.key == "@" ? var.dns_name : "${each.key}.${var.dns_name}"
+  managed_zone = google_dns_managed_zone.zone.name
+  project      = google_dns_managed_zone.zone.project
+  type         = "A"
+  ttl          = coalesce(each.value.ttl, var.default_ttl)
+  rrdatas      = each.value.rrdatas
+}
+
+resource "google_dns_record_set" "cname_records" {
+  for_each     = var.cname_records
+  name         = each.key == "@" ? var.dns_name : "${each.key}.${var.dns_name}"
+  managed_zone = google_dns_managed_zone.zone.name
+  project      = google_dns_managed_zone.zone.project
+  type         = "CNAME"
+  ttl          = coalesce(each.value.ttl, var.default_ttl)
+  rrdatas      = each.value.rrdatas
+}
+
 resource "google_dns_record_set" "mx_records" {
   for_each     = var.mx_records
   name         = each.key == "@" ? var.dns_name : "${each.key}.${var.dns_name}"
   managed_zone = google_dns_managed_zone.zone.name
   project      = google_dns_managed_zone.zone.project
   type         = "MX"
-  ttl          = lookup(each.value, "ttl", var.default_ttl)
+  ttl          = coalesce(each.value.ttl, var.default_ttl)
   rrdatas      = each.value.rrdatas
 }
 
@@ -31,6 +51,6 @@ resource "google_dns_record_set" "txt_records" {
   managed_zone = google_dns_managed_zone.zone.name
   project      = google_dns_managed_zone.zone.project
   type         = "TXT"
-  ttl          = lookup(each.value, "ttl", var.default_ttl)
+  ttl          = coalesce(each.value.ttl, var.default_ttl, 300)
   rrdatas      = each.value.rrdatas
 }

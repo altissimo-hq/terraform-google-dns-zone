@@ -1,3 +1,21 @@
+variable "a_records" {
+  description = "Google Cloud DNS A Records"
+  type = map(object({
+    rrdatas = list(string)
+    ttl     = optional(number)
+  }))
+  default = {}
+}
+
+variable "cname_records" {
+  description = "Google Cloud DNS CNAME Records"
+  type = map(object({
+    rrdatas = list(string)
+    ttl     = optional(number)
+  }))
+  default = {}
+}
+
 variable "default_ttl" {
   description = "Default TTL"
   type        = number
@@ -23,7 +41,11 @@ variable "force_destroy" {
 
 variable "mx_records" {
   description = "Google Cloud DNS MX Records"
-  type        = map(any)
+  type = map(object({
+    rrdatas = list(string)
+    ttl     = optional(number)
+  }))
+  default = {}
 }
 
 variable "project_id" {
@@ -33,7 +55,11 @@ variable "project_id" {
 
 variable "txt_records" {
   description = "Google Cloud DNS TXT Records"
-  type        = map(any)
+  type = map(object({
+    rrdatas = list(string)
+    ttl     = optional(number)
+  }))
+  default = {}
 }
 
 variable "zone_description" {
