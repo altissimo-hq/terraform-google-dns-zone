@@ -1,6 +1,6 @@
 output "ds_records" {
   description = "DS Record for the Cloud DNS Managed Zone (if DNSSEC enabled)"
-  value       = data.google_dns_keys.zone[0].key_signing_keys[*].ds_record
+  value       = try(data.google_dns_keys.zone[0].key_signing_keys[*].ds_record, null)
 }
 
 output "id" {
