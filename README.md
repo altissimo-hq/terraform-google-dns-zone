@@ -6,14 +6,14 @@ This module creates a Google Cloud DNS Managed Zone and resources records, inclu
 ## Requirements
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3 |
 | <a name="requirement_google"></a> [google](#requirement\_google) | >= 6.0 |
 
 ## Providers
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | <a name="provider_google"></a> [google](#provider\_google) | >= 6.0 |
 
 ## Modules
@@ -23,7 +23,7 @@ No modules.
 ## Resources
 
 | Name | Type |
-|------|------|
+| ---- | ---- |
 | [google_dns_managed_zone.zone](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/dns_managed_zone) | resource |
 | [google_dns_record_set.a_records](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/dns_record_set) | resource |
 | [google_dns_record_set.aaaa_records](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/dns_record_set) | resource |
@@ -36,7 +36,7 @@ No modules.
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
+| ---- | ----------- | ---- | ------- | :------: |
 | <a name="input_a_records"></a> [a\_records](#input\_a\_records) | Google Cloud DNS A Records | <pre>map(object({<br/>    rrdatas = list(string)<br/>    ttl     = optional(number)<br/>  }))</pre> | `{}` | no |
 | <a name="input_aaaa_records"></a> [aaaa\_records](#input\_aaaa\_records) | Google Cloud DNS AAAA Records | <pre>map(object({<br/>    rrdatas = list(string)<br/>    ttl     = optional(number)<br/>  }))</pre> | `{}` | no |
 | <a name="input_cname_records"></a> [cname\_records](#input\_cname\_records) | Google Cloud DNS CNAME Records | <pre>map(object({<br/>    rrdatas = list(string)<br/>    ttl     = optional(number)<br/>  }))</pre> | `{}` | no |
@@ -56,7 +56,7 @@ No modules.
 ## Outputs
 
 | Name | Description |
-|------|-------------|
+| ---- | ----------- |
 | <a name="output_ds_records"></a> [ds\_records](#output\_ds\_records) | DS Record for the Cloud DNS Managed Zone (if DNSSEC enabled) |
 | <a name="output_id"></a> [id](#output\_id) | Cloud DNS Managed Zone ID (projects/{project}/managedZones/{name}) |
 | <a name="output_managed_zone_id"></a> [managed\_zone\_id](#output\_managed\_zone\_id) | Cloud DNS Managed Zone ID |
